@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServiU — Servicios entre universitarios | UATF Potosí</title>
+  <style>
+/* ==========================================================================
+   ServiU — Hoja de estilos principal (HTML + CSS puro)
+   Paleta oficial del Plan de Negocio:
+   - Azul marino: #1F3864
+   - Dorado:      #C9A227
+   - Gris oscuro: #595959
+   - Blanco:      #FFFFFF
+   ========================================================================== */
+
+:root {
+  --navy: #1F3864;
+  --navy-dark: #15284A;
+  --gold: #C9A227;
+  --gold-dark: #B08B1A;
+  --gold-soft: #FDF8E8;
+  --gray-text: #595959;
+  --ink: #1E293B;
+  --bg: #FFFFFF;
+  --bg-alt: #F4F7FB;
+  --border: #DCE4EE;
+  --whatsapp: #1E8E5A;
+  --whatsapp-dark: #167347;
+  --danger-bg: #FEF2F2;
+  --danger-border: #FECACA;
+  --danger-ink: #991B1B;
+  --ok-bg: #F0FDF4;
+  --ok-border: #BBF7D0;
+  --ok-ink: #166534;
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(31, 56, 100, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--navy);
+  color: #FFFFFF;
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 4px 14px rgba(15, 29, 56, 0.18);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 70px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.5px;
+}
+
+.badge-dot {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.brand-accent {
+  color: var(--gold);
+}
+
+.brand-tagline {
+  font-size: 0.72rem;
+  color: #CBD5E1;
+  letter-spacing: 0.2px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: #E2E8F0;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #15284A;
+}
+
+.btn-gold:hover {
+  background: var(--gold-dark);
+  color: #FFFFFF;
+}
+
+.btn-navy {
+  background: var(--navy);
+  color: #FFFFFF;
+}
+
+.btn-navy:hover {
+  background: var(--navy-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: #FFFFFF;
+}
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: #FFFFFF;
+  padding: 7px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-whatsapp:hover {
+  background: var(--whatsapp-dark);
+}
+
+.btn-full {
+  width: 100%;
+  padding: 12px 18px;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  background: linear-gradient(180deg, #EEF3FA 0%, #FFFFFF 100%);
+  padding: 64px 0 56px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.pill-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--gold-soft);
+  color: #7C5E08;
+  border: 1px solid #EAD58B;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  color: var(--navy);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  color: var(--gray-text);
+  font-size: 1.05rem;
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+
+.search-bar {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr auto;
+  gap: 10px;
+  background: #FFFFFF;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+.search-bar input,
+.search-bar select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.94rem;
+  color: var(--ink);
+  background: #FAFBFD;
+  outline: none;
+}
+
+.search-bar input:focus,
+.search-bar select:focus {
+  border-color: var(--navy);
+  background: #FFFFFF;
+}
+
+.quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--gray-text);
+  margin-bottom: 34px;
+}
+
+.quick-tags a {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-tags a:hover {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.stat-item {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+}
+
+.stat-item strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1.15rem;
+  margin-bottom: 2px;
+}
+
+.stat-item span {
+  font-size: 0.8rem;
+  color: var(--gray-text);
+}
+
+/* ==========================================================================
+   Secciones genéricas y grillas
+   ========================================================================== */
+.section {
+  padding: 64px 0;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 38px;
+}
+
+.section-kicker {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold-dark);
+  margin-bottom: 6px;
+}
+
+.section-header h2 {
+  font-size: clamp(1.55rem, 3vw, 2.05rem);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.section-header p {
+  color: var(--gray-text);
+  font-size: 0.98rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Tarjetas de categorías
+   ========================================================================== */
+.cat-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.cat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.cat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.cat-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-navy {
+  background: #E8EEF7;
+  color: var(--navy);
+}
+
+.icon-gold {
+  background: var(--gold-soft);
+  color: var(--gold-dark);
+}
+
+.cat-card h3 {
+  font-size: 1.06rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.cat-card p {
+  font-size: 0.9rem;
+  color: var(--gray-text);
+}
+
+/* ==========================================================================
+   Tarjetas de servicios destacados
+   ========================================================================== */
+.service-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 10px rgba(31, 56, 100, 0.04);
+}
+
+.service-card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 6px 20px rgba(201, 162, 39, 0.14);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.avatar-navy {
+  background: var(--navy);
+  color: #FFFFFF;
+}
+
+.avatar-gold {
+  background: var(--gold);
+  color: #15284A;
+}
+
+.badge-featured {
+  background: var(--gold);
+  color: #15284A;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.badge-cat {
+  background: #EEF3FA;
+  color: var(--navy);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.service-card h3 {
+  font-size: 1.08rem;
+  color: var(--navy);
+}
+
+.provider {
+  font-size: 0.83rem;
+  color: var(--gray-text);
+  font-weight: 600;
+}
+
+.card-desc {
+  font-size: 0.89rem;
+  color: var(--ink);
+  flex-grow: 1;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.rating {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #B45309;
+}
+
+.price {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.verified-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ok-ink);
+  background: var(--ok-bg);
+  border: 1px solid var(--ok-border);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   Cómo funciona (4 pasos)
+   ========================================================================== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.step-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.step-card h3 {
+  font-size: 1.02rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.step-card p {
+  font-size: 0.88rem;
+  color: var(--gray-text);
+}
+
+/* ==========================================================================
+   Integridad académica
+   ========================================================================== */
+.integrity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.integrity-box {
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  border: 1px solid;
+}
+
+.box-allow {
+  background: var(--ok-bg);
+  border-color: var(--ok-border);
+}
+
+.box-allow h3 {
+  color: var(--ok-ink);
+  margin-bottom: 12px;
+}
+
+.box-ban {
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
+}
+
+.box-ban h3 {
+  color: var(--danger-ink);
+  margin-bottom: 12px;
+}
+
+.integrity-box ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.93rem;
+}
+
+.integrity-box li {
+  padding-left: 16px;
+  position: relative;
+}
+
+.integrity-box li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Planes y tarifas
+   ========================================================================== */
+.plan-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan-highlight {
+  border: 2px solid var(--gold);
+  box-shadow: var(--shadow);
+}
+
+.plan-tag {
+  align-self: flex-start;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #EEF3FA;
+  color: var(--navy);
+}
+
+.tag-gold {
+  background: var(--gold);
+  color: #15284A;
+}
+
+.plan-card h3 {
+  font-size: 1.2rem;
+  color: var(--navy);
+}
+
+.plan-price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.plan-price span {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gray-text);
+}
+
+.plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--gray-text);
+  flex-grow: 1;
+  margin-bottom: 8px;
+}
+
+.plan-list li::before {
+  content: "✓ ";
+  color: var(--navy);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Tarjeta de registro / acceso UATF
+   ========================================================================== */
+.auth-card {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: #FFFFFF;
+}
+
+.auth-brand {
+  background: var(--navy);
+  color: #FFFFFF;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.badge-lg {
+  width: 50px;
+  height: 50px;
+  font-size: 1.6rem;
+}
+
+.auth-brand h2 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.auth-brand p {
+  color: #CBD5E1;
+  font-size: 0.94rem;
+}
+
+.auth-points {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #F8FAFC;
+  margin-top: 6px;
+}
+
+.auth-points li::before {
+  content: "● ";
+  color: var(--gold);
+}
+
+.auth-form {
+  padding: 34px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-form h3 {
+  font-size: 1.3rem;
+  color: var(--navy);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.field input,
+.field select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.93rem;
+  color: var(--ink);
+  background: #FAFBFD;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--navy);
+  background: #FFFFFF;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: var(--gray-text);
+  cursor: pointer;
+}
+
+.checkbox-row input {
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.footer {
+  background: var(--navy-dark);
+  color: #E2E8F0;
+  padding-top: 48px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr;
+  gap: 32px;
+  padding-bottom: 36px;
+}
+
+.footer-brand {
+  margin-bottom: 12px;
+}
+
+.footer-desc {
+  font-size: 0.88rem;
+  color: #CBD5E1;
+  max-width: 340px;
+}
+
+.footer h4 {
+  color: var(--gold);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #CBD5E1;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px 0;
+  font-size: 0.82rem;
+  color: #94A3B8;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   Responsivo (Tablet y Móvil)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .nav-links {
+    display: none;
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .steps-grid,
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .auth-card,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-bar,
+  .grid-3,
+  .steps-grid,
+  .integrity-grid,
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    padding: 44px 0 40px;
+  }
+  .section {
+    padding: 48px 0;
+  }
+}
+
+</style>
+</head>
+<body>
+  <!-- Navegación principal -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand" aria-label="ServiU Inicio">
+        <span class="brand-badge">
+          <span class="badge-letter">S</span>
+          <span class="badge-dot" aria-hidden="true"></span>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Servi<span class="brand-accent">U</span></span>
+          <span class="brand-tagline">servicios entre universitarios</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Menú principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#destacados">Destacados</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#integridad">Integridad</a>
+        <a href="#planes">Planes</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#registro" class="btn btn-gold">Ingresar UATF</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Buscador -->
+    <section id="inicio" class="hero">
+      <div class="container hero-inner">
+        <span class="pill-badge">Comunidad verificada · UATF Potosí, Bolivia</span>
+        <h1>Encuentra y ofrece servicios entre universitarios</h1>
+        <p class="hero-subtitle">
+          El mercado digital exclusivo para estudiantes y negocios cercanos a la Universidad Autónoma “Tomás Frías”.
+          Compara tutorías, apuntes propios, impresiones y apoyo técnico en un solo lugar, con perfiles verificados y reglas claras.
+        </p>
+
+        <form class="search-bar" action="#destacados" method="get" aria-label="Buscador de servicios">
+          <input
+            type="text"
+            name="q"
+            placeholder="¿Qué servicio necesitas? Ej.: tutoría de Cálculo I, fotocopias, formato APA..."
+            aria-label="Buscar servicio"
+          />
+          <select name="categoria" aria-label="Filtrar por categoría">
+            <option value="">Todas las categorías</option>
+            <option value="reproduccion">Reproducción y acabados</option>
+            <option value="material">Material de estudio propio</option>
+            <option value="tutorias">Tutorías y clases de refuerzo</option>
+            <option value="apoyo">Apoyo técnico y de forma</option>
+            <option value="traduccion">Traducción e idiomas</option>
+            <option value="complementarios">Servicios complementarios</option>
+          </select>
+          <button type="submit" class="btn btn-navy">Buscar</button>
+        </form>
+
+        <div class="quick-tags" aria-label="Búsquedas frecuentes">
+          <span>Populares:</span>
+          <a href="#destacados">Tutorías</a>
+          <a href="#destacados">Apuntes propios</a>
+          <a href="#destacados">Fotocopias y anillado</a>
+          <a href="#destacados">Formato APA</a>
+          <a href="#destacados">Diseño gráfico</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <strong>100 % UATF</strong>
+            <span>Registro con correo institucional</span>
+          </div>
+          <div class="stat-item">
+            <strong>6 categorías</strong>
+            <span>Catálogo cerrado y ordenado</span>
+          </div>
+          <div class="stat-item">
+            <strong>Bs 0</strong>
+            <span>Acceso y publicación básica gratis</span>
+          </div>
+          <div class="stat-item">
+            <strong>Integridad</strong>
+            <span>Cero trabajos por encargo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categorías permitidas -->
+    <section id="categorias" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Catálogo autorizado</span>
+          <h2>Seis categorías pensadas para tu vida universitaria</h2>
+          <p>Cada publicación pasa por revisión de categoría y normas de integridad académica antes de hacerse visible.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="cat-card">
+            <div class="cat-icon icon-navy" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            </div>
+            <h3>Reproducción y acabados</h3>
+            <p>Fotocopias, impresiones, escaneado, anillado, plastificado y empastado de documentos y trabajos de grado.</p>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-icon icon-gold" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <h3>Material de estudio propio</h3>
+            <p>Apuntes, resúmenes y guías elaboradas por el propio oferente para consulta y repaso, respetando derechos de autor.</p>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-icon icon-navy" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3>Tutorías y clases de refuerzo</h3>
+            <p>Explicación de temas, resolución de dudas y preparación para parciales o finales, presencial o virtual.</p>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-icon icon-gold" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3>Apoyo técnico y de forma</h3>
+            <p>Maquetación, formato APA, corrección ortográfica y de estilo, diagramas y presentaciones sobre tu propio contenido.</p>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-icon icon-navy" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3>Traducción e idiomas</h3>
+            <p>Traducción de textos de consulta, artículos académicos y bibliografía, además de clases particulares de idiomas.</p>
+          </article>
+
+          <article class="cat-card">
+            <div class="cat-icon icon-gold" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <h3>Servicios complementarios</h3>
+            <p>Diseño gráfico de afiches y logotipos, fotografía universitaria, transcripción de entrevistas y apoyo en eventos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destacados de la semana -->
+    <section id="destacados" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Vitrina verificada</span>
+          <h2>Servicios destacados de la semana</h2>
+          <p>Ejemplos referenciales de servicios publicados por estudiantes verificados y negocios aliados cerca de la UATF.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="service-card featured">
+            <div class="card-top">
+              <span class="avatar avatar-navy">T</span>
+              <span class="badge-featured">Destacado</span>
+            </div>
+            <h3>Tutoría de Cálculo I</h3>
+            <p class="provider">María R. · Ing. de Sistemas · 5.º semestre</p>
+            <p class="card-desc">Explicación de límites, derivadas e integrales con ejercicios resueltos y preparación para parciales.</p>
+            <div class="card-meta">
+              <span class="rating">★ 4,9 (18 reseñas)</span>
+              <span class="price">Bs 30 / h</span>
+            </div>
+            <div class="card-footer">
+              <span class="verified-tag">Oferente verificado</span>
+              <a href="#registro" class="btn btn-whatsapp">Contactar</a>
+            </div>
+          </article>
+
+          <article class="service-card featured">
+            <div class="card-top">
+              <span class="avatar avatar-gold">F</span>
+              <span class="badge-featured">Destacado</span>
+            </div>
+            <h3>Fotocopias, anillado y empastado</h3>
+            <p class="provider">Papelería Universitaria · Frente a la UATF</p>
+            <p class="card-desc">Impresión blanco y negro o color, anillado rápido y empastado formal para proyectos y trabajos de grado.</p>
+            <div class="card-meta">
+              <span class="rating">★ 4,7 (32 reseñas)</span>
+              <span class="price">Desde Bs 0,30</span>
+            </div>
+            <div class="card-footer">
+              <span class="verified-tag">Negocio aliado</span>
+              <a href="#registro" class="btn btn-whatsapp">Contactar</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-top">
+              <span class="avatar avatar-navy">D</span>
+              <span class="badge-cat">Diseño</span>
+            </div>
+            <h3>Diseño de afiches y presentaciones</h3>
+            <p class="provider">Diego M. · Carrera de Artes · 7.º semestre</p>
+            <p class="card-desc">Afiches para ferias académicas, logotipos para proyectos de materia y plantillas limpias para defensas.</p>
+            <div class="card-meta">
+              <span class="rating">★ 4,6 (11 reseñas)</span>
+              <span class="price">Bs 40</span>
+            </div>
+            <div class="card-footer">
+              <span class="verified-tag">Oferente verificado</span>
+              <a href="#registro" class="btn btn-whatsapp">Contactar</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-top">
+              <span class="avatar avatar-navy">C</span>
+              <span class="badge-cat">Tutorías</span>
+            </div>
+            <h3>Cálculo II y Álgebra Lineal</h3>
+            <p class="provider">Carlos A. · Ing. Civil · 7.º semestre</p>
+            <p class="card-desc">Clases presenciales en campus o virtuales enfocadas en ejercicios tipo examen y resolución de dudas.</p>
+            <div class="card-meta">
+              <span class="rating">★ 4,8 (14 reseñas)</span>
+              <span class="price">Bs 25 / h</span>
+            </div>
+            <div class="card-footer">
+              <span class="verified-tag">Tutor destacado</span>
+              <a href="#registro" class="btn btn-whatsapp">Contactar</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-top">
+              <span class="avatar avatar-gold">A</span>
+              <span class="badge-cat">Apoyo técnico</span>
+            </div>
+            <h3>Formato APA y maquetación de informes</h3>
+            <p class="provider">Lucía V. · Ing. de Sistemas · 8.º semestre</p>
+            <p class="card-desc">Revisión de índices automáticos, numeración, normas APA y orden visual sobre documentos ya redactados por el estudiante.</p>
+            <div class="card-meta">
+              <span class="rating">★ 4,9 (9 reseñas)</span>
+              <span class="price">Bs 25</span>
+            </div>
+            <div class="card-footer">
+              <span class="verified-tag">Oferente verificado</span>
+              <a href="#registro" class="btn btn-whatsapp">Contactar</a>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-top">
+              <span class="avatar avatar-navy">I</span>
+              <span class="badge-cat">Idiomas</span>
+            </div>
+            <h3>Traducción de bibliografía (Inglés–Español)</h3>
+            <p class="provider">Valeria S. · Lingüística e Idiomas · 6.º semestre</p>
+            <p class="card-desc">Traducción fiel de artículos técnicos y papers académicos para consulta e investigación universitaria.</p>
+            <div class="card-meta">
+              <span class="rating">★ 4,8 (12 reseñas)</span>
+              <span class="price">Bs 20 / pág.</span>
+            </div>
+            <div class="card-footer">
+              <span class="verified-tag">Oferente verificado</span>
+              <a href="#registro" class="btn btn-whatsapp">Contactar</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section id="como-funciona" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Proceso simple y seguro</span>
+          <h2>¿Cómo funciona ServiU?</h2>
+          <p>Cuatro pasos pensados para ahorrar tiempo y garantizar confianza en cada contacto dentro de la UATF.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <h3>Verifica tu correo UATF</h3>
+            <p>Crea tu cuenta con tu correo institucional y confirma tu código para acceder a la comunidad cerrada.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <h3>Busca o publica</h3>
+            <p>Filtra por categoría, carrera, materia, precio y calificación, o publica tu propio servicio en minutos.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <h3>Contacta por WhatsApp</h3>
+            <p>Acuerda horarios, lugar de entrega y detalles directamente con el oferente o negocio verificado.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">4</span>
+            <h3>Califica el servicio</h3>
+            <p>Deja tu reseña real al concluir el servicio para ayudar a otros compañeros y premiar a los mejores oferentes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integridad académica -->
+    <section id="integridad" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Nuestro sello de confianza</span>
+          <h2>Integridad académica desde el diseño</h2>
+          <p>ServiU apoya tu estudio sin reemplazar tu esfuerzo. Todas las publicaciones cumplen nuestro Código de Conducta.</p>
+        </div>
+
+        <div class="integrity-grid">
+          <div class="integrity-box box-allow">
+            <h3>✓ Servicios permitidos</h3>
+            <ul>
+              <li>Tutorías, resolución de dudas y clases de refuerzo.</li>
+              <li>Apuntes, guías y resúmenes elaborados por el propio oferente.</li>
+              <li>Fotocopias, impresiones, anillado y empastado de documentos.</li>
+              <li>Formato APA, corrección ortográfica y diagramación sobre contenido propio.</li>
+              <li>Traducción de bibliografía, diseño gráfico y servicios complementarios.</li>
+            </ul>
+          </div>
+
+          <div class="integrity-box box-ban">
+            <h3>✕ Servicios estrictamente prohibidos</h3>
+            <ul>
+              <li>Trabajos por encargo (monografías, informes, ensayos o tesis).</li>
+              <li>Resolución de exámenes, pruebas o prácticas evaluadas en curso.</li>
+              <li>Suplantación de identidad en clases, exposiciones o evaluaciones.</li>
+              <li>Venta de libros escaneados o material protegido por derechos de autor.</li>
+              <li>Cualquier práctica irregular contraria a los reglamentos de la UATF.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planes y tarifas -->
+    <section id="planes" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Transparencia de precios</span>
+          <h2>Acceso gratuito y opciones de visibilidad</h2>
+          <p>Registrarse, buscar, publicar y contactar siempre es gratis. Los precios de visibilidad incluyen impuestos (IVA e IT).</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="plan-card">
+            <span class="plan-tag">Estudiantes</span>
+            <h3>Acceso Básico</h3>
+            <p class="plan-price">Bs 0 <span>/ siempre</span></p>
+            <ul class="plan-list">
+              <li>Registro verificado con correo UATF</li>
+              <li>Búsqueda con filtros académicos</li>
+              <li>Publicación de servicios por 30 días</li>
+              <li>Contacto directo por WhatsApp</li>
+              <li>Perfil con calificaciones y reseñas</li>
+            </ul>
+            <a href="#registro" class="btn btn-outline">Crear cuenta gratis</a>
+          </article>
+
+          <article class="plan-card plan-highlight">
+            <span class="plan-tag tag-gold">Más elegido</span>
+            <h3>Publicación Destacada</h3>
+            <p class="plan-price">Bs 5 a Bs 15 <span>/ 3 o 7 días</span></p>
+            <ul class="plan-list">
+              <li>Marca dorada “Destacado” visible</li>
+              <li>Posición preferente en resultados</li>
+              <li>Aparición en la página de inicio</li>
+              <li>Bs 5–10 (reproducción y apuntes)</li>
+              <li>Bs 8–15 (tutorías, apoyo, idiomas y diseño)</li>
+            </ul>
+            <a href="#registro" class="btn btn-gold">Destacar servicio</a>
+          </article>
+
+          <article class="plan-card">
+            <span class="plan-tag">Negocios locales</span>
+            <h3>Publicidad Local</h3>
+            <p class="plan-price">Bs 100 – 300 <span>/ mes</span></p>
+            <ul class="plan-list">
+              <li><strong>Básico (Bs 100):</strong> banner en categoría + perfil verificado</li>
+              <li><strong>Estándar (Bs 200):</strong> banner en inicio + 1 publicación/mes</li>
+              <li><strong>Premium (Bs 300):</strong> categoría patrocinada + informe mensual</li>
+              <li>Ideal para fotocopiadoras, imprentas y academias</li>
+            </ul>
+            <a href="#contacto" class="btn btn-navy">Anunciar mi negocio</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registro / Acceso UATF -->
+    <section id="registro" class="section section-alt">
+      <div class="container">
+        <div class="auth-card">
+          <div class="auth-brand">
+            <span class="brand-badge badge-lg">
+              <span class="badge-letter">S</span>
+              <span class="badge-dot" aria-hidden="true"></span>
+            </span>
+            <h2>Únete a la comunidad ServiU</h2>
+            <p>Un solo espacio verificado para estudiantes y pequeños negocios en torno a la Universidad Autónoma “Tomás Frías”.</p>
+            <ul class="auth-points">
+              <li>Verificación rápida con correo institucional</li>
+              <li>Atención a consultas en máximo 24 horas</li>
+              <li>Moderación activa y reportes en 48 horas</li>
+            </ul>
+          </div>
+
+          <form class="auth-form" action="#inicio" method="get">
+            <h3>Crea tu cuenta universitaria</h3>
+            <div class="field">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" type="text" placeholder="Ej.: Juan Pérez Mamani" required />
+            </div>
+            <div class="field">
+              <label for="correo">Correo institucional UATF</label>
+              <input id="correo" type="email" placeholder="nombre.apellido@uatf.edu.bo" required />
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="carrera">Carrera / Facultad</label>
+                <input id="carrera" type="text" placeholder="Ej.: Ingeniería de Sistemas" />
+              </div>
+              <div class="field">
+                <label for="rol">¿Cómo usarás ServiU?</label>
+                <select id="rol">
+                  <option>Busco servicios</option>
+                  <option>Ofrezco servicios</option>
+                  <option>Ambos</option>
+                  <option>Negocio anunciante</option>
+                </select>
+              </div>
+            </div>
+            <label class="checkbox-row">
+              <input type="checkbox" required />
+              <span>Acepto los Términos y Condiciones, la Política de Privacidad y el Código de Integridad Académica.</span>
+            </label>
+            <button type="submit" class="btn btn-gold btn-full">Solicitar código de verificación</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand footer-brand">
+          <span class="brand-badge">
+            <span class="badge-letter">S</span>
+            <span class="badge-dot" aria-hidden="true"></span>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">Servi<span class="brand-accent">U</span></span>
+            <span class="brand-tagline">servicios entre universitarios</span>
+          </span>
+        </div>
+        <p class="footer-desc">
+          Empresa de intermediación digital de servicios estudiantiles en Potosí, Bolivia.
+          Proyecto emprendedor desarrollado por estudiantes de Ingeniería de Sistemas — UATF.
+        </p>
+      </div>
+
+      <div>
+        <h4>Secciones</h4>
+        <ul class="footer-links">
+          <li><a href="#categorias">Categorías permitidas</a></li>
+          <li><a href="#destacados">Servicios destacados</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#integridad">Integridad académica</a></li>
+          <li><a href="#planes">Tarifario y planes</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li>ServiU S.R.L. · Potosí, Bolivia</li>
+          <li>Av. del Maestro s/n · Zona Central (UATF)</li>
+          <li>Correo: contacto@serviu.bo</li>
+          <li>Web: https://serviu.bo</li>
+          <li>Atención: Lunes a sábado (24 h respuesta)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 ServiU S.R.L. — Todos los derechos reservados.</span>
+        <span>Empresa independiente · No afiliada oficialmente a la administración de la UATF.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
